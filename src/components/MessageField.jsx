@@ -1,9 +1,21 @@
-export function MessageField() {
+export function MessageField({person, errorMsg, handleInputChange}) {
 
   return (
-    <div>
-      Message *
-      <textarea id="message" name="message" rows="5" />
-    </div>
+    <>
+      <label htmlFor="message">
+        Message *
+        <textarea
+          value={person.message}
+          onChange={(e) => handleInputChange(e, 'message')}
+          id="message"
+          name="message"
+          rows="5"
+          maxLength="500"
+          lang="lv"
+          required
+        />
+      </label>
+      <p>{errorMsg.messageMsg}</p>
+    </>
   )
 }
