@@ -69,8 +69,8 @@ export function ContactPage() {
     setPerson({...person, [fieldName]: e.target.value})
   }
 
-  function handleRadioInput(e) {
-    setPerson({...person, queryType: e.target.value})
+  function handleRadioInput(value) {
+    setPerson({...person, queryType: value})
   }
 
   function handleCheckboxField(fieldName) {
@@ -104,6 +104,7 @@ export function ContactPage() {
         />
         <QueryType
           handleRadioInput={handleRadioInput}
+          person={person}
           errorMsg={errorMsg}
         />
         <MessageField

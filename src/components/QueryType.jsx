@@ -1,15 +1,15 @@
-export function QueryType({errorMsg, handleRadioInput}) {
+export function QueryType({person, errorMsg, handleRadioInput}) {
 
   return (
     <>
       <div>
         Query Type *
         <label>
-          <input onChange={ (e) => handleRadioInput(e)} type="radio" name="myRadio" value="general-enquiry" required />
+          <input onChange={() => handleRadioInput('general-enquiry')} type="radio" name="myRadio" checked={person.queryType === "general-enquiry"} required />
           General Enquiry
         </label>
         <label>
-          <input onChange={(e) => handleRadioInput(e)} type="radio" name="myRadio" value="support-request" required />
+          <input onChange={() => handleRadioInput('support-request')} type="radio" name="myRadio" checked={person.queryType === "support-request"} required />
           Support Request
         </label>
       </div>
