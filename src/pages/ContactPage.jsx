@@ -12,14 +12,16 @@ export function ContactPage() {
     lastName: '',
     email: '',
     queryType: '',
-    message: ''
+    message: '',
+    checkbox: false
   });
   const [errorMsg, setErrorMsg] = useState({
     firstNameMsg: '',
     lastNameMsg: '',
     emailMsg: '',
     queryMsg: '',
-    messageMsg: ''
+    messageMsg: '',
+    checkboxMsg: ''
   });
 
   function handleSubmit(e) {
@@ -30,7 +32,8 @@ export function ContactPage() {
       lastNameMsg: '',
       emailMsg: '',
       queryMsg: '',
-      messageMsg: ''
+      messageMsg: '',
+      checkboxMsg: ''
     };
 
     if(!nameRegex.test(person.firstName)) {
@@ -53,6 +56,12 @@ export function ContactPage() {
       newErrors.messageMsg = 'This field is required';
     }
 
+    if(person.checkbox === false) {
+      newErrors.checkboxMsg = 'To submit this form, please consent to being contacted';
+    }
+
+    console.log(person.checkbox);
+
     setErrorMsg(newErrors);
   } 
 
@@ -62,6 +71,14 @@ export function ContactPage() {
 
   function handleRadioInput(e) {
     setPerson({...person, queryType: e.target.value})
+  }
+
+  function handleCheckboxField(fieldName) {
+    //!person[fieldName] apgriež boolean vērtību, tātad true kļūst par false un otrādi. Tādējādi var vienkārši pārslēgt checkbox vērtību.
+    setPerson({...person, [fieldName]: !person[fieldName]});
+    // person[fieldName] === false
+    // ? setPerson({...person, [fieldName]: true})
+    // : setPerson({...person, [fieldName]: false})
   }
 
   // function handleFirstNameInput(e) {
@@ -94,7 +111,11 @@ export function ContactPage() {
           person={person}
           errorMsg={errorMsg}
         />
-        <ConsentCheckbox />
+        <ConsentCheckbox
+          handleCheckboxField={handleCheckboxField}
+          person={person}
+          errorMsg={errorMsg}
+        />
         <button type="submit">Submit</button>
       </form>
     </main>
