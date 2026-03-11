@@ -10,12 +10,14 @@ export function ContactPage() {
   const [person, setPerson] = useState ({
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    queryType: ''
   });
   const [errorMsg, setErrorMsg] = useState({
     firstNameMsg: '',
     lastNameMsg: '',
-    emailMsg: ''
+    emailMsg: '',
+    queryMsg: ''
   });
 
   function handleSubmit(e) {
@@ -24,7 +26,8 @@ export function ContactPage() {
     const newErrors = {
       firstNameMsg: '',
       lastNameMsg: '',
-      emailMsg: ''
+      emailMsg: '',
+      queryMsg: ''
     };
 
     if(!nameRegex.test(person.firstName)) {
@@ -38,12 +41,20 @@ export function ContactPage() {
     if(!emailRegex.test(person.email)) {
       newErrors.emailMsg = 'Please enter a valid email address';
     }
+    
+    if(person.queryType === "") {
+      newErrors.queryMsg = 'Please select a query type';
+    }
 
     setErrorMsg(newErrors);
   } 
 
   function handleInputChange (e, fieldName) {
     setPerson({...person, [fieldName]: e.target.value})
+  }
+
+  function handleRadioInput(e) {
+    setPerson({...person, queryType: e.target.value})
   }
 
   // function handleFirstNameInput(e) {
@@ -67,7 +78,10 @@ export function ContactPage() {
           person={person}
           errorMsg={errorMsg}
         />
-        <QueryType />
+        <QueryType
+          handleRadioInput={handleRadioInput}
+          errorMsg={errorMsg}
+        />
         <MessageField />
         <ConsentCheckbox />
         <button type="submit">Submit</button>

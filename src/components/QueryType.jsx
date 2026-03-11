@@ -1,16 +1,19 @@
-export function QueryType() {
+export function QueryType({errorMsg, handleRadioInput}) {
 
   return (
-    <div>
-      Query Type *
-      <label>
-        <input type="radio" name="myRadio" value="option1" />
-        General Enquiry
-      </label>
-      <label>
-        <input type="radio" name="myRadio" value="option1" />
-        Support Request
-      </label>
-    </div>
+    <>
+      <div>
+        Query Type *
+        <label>
+          <input onChange={ (e) => handleRadioInput(e)} type="radio" name="myRadio" value="general-enquiry" />
+          General Enquiry
+        </label>
+        <label>
+          <input onChange={(e) => handleRadioInput(e)} type="radio" name="myRadio" value="support-request" />
+          Support Request
+        </label>
+      </div>
+      <p>{errorMsg.queryMsg}</p>
+    </>
   )
 }
