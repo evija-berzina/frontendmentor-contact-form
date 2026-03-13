@@ -1,10 +1,10 @@
 export function MessageField({person, errorMsg, handleInputChange}) {
 
   return (
-    <>
-      <label htmlFor="message">
-        Message *
+    <div className="flex flex-col">
+      <label className="pb-2" htmlFor="message">Message *</label>
         <textarea
+          className={`${errorMsg.messageMsg ? 'input-error' : 'input-normal'}`}
           value={person.message}
           onChange={(e) => handleInputChange(e, 'message')}
           id="message"
@@ -14,8 +14,8 @@ export function MessageField({person, errorMsg, handleInputChange}) {
           lang="lv"
           required
         />
-      </label>
-      <p>{errorMsg.messageMsg}</p>
-    </>
+      
+      <p className="error-message">{errorMsg.messageMsg}</p>
+    </div>
   )
 }
