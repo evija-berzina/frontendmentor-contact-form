@@ -1,9 +1,10 @@
 export function ConsentCheckbox({handleCheckboxField, person, errorMsg}) {
 
   return (
-    <>
-      <label htmlFor="myCheckbox">
+    <div>
+      <label className="flex items-center gap-4" htmlFor="myCheckbox">
         <input 
+          className="w-4 h-4"
           checked={person.checkbox}
           onChange={() => handleCheckboxField('checkbox')}
           type="checkbox"
@@ -13,7 +14,7 @@ export function ConsentCheckbox({handleCheckboxField, person, errorMsg}) {
         />
         I consent to bring contacted by the team *
       </label>
-      <p>{errorMsg.checkboxMsg}</p>
-    </>
+      <p className="error-message">{errorMsg.checkboxMsg}</p>
+    </div>
   )
 }
