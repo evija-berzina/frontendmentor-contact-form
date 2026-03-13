@@ -92,7 +92,7 @@ export function ContactPage() {
   // }
 
   return (
-    <main className="bg-[hsl(var(--white))] flex flex-col rounded-xl p-6 md:w-xl">
+    <main className="bg-[hsl(var(--white))] flex flex-col rounded-xl p-8 md:w-xl">
       <h1 className="text-3xl font-bold pb-2">Contact Us</h1>
       <form
         className="flex flex-col gap-4 mt-4"
@@ -118,7 +118,9 @@ export function ContactPage() {
           person={person}
           errorMsg={errorMsg}
         />
-        <button className="bg-[hsl(var(--green-600))] text-[hsl(var(--white))] font-bold py-3 px-6 rounded-md" type="submit">Submit</button>
+        <button className="bg-[hsl(var(--green-600))] text-[hsl(var(--white))] font-bold py-3 px-6 rounded-md cursor-pointer" type="submit">
+          Submit
+        </button>
       </form>
     </main>
   )

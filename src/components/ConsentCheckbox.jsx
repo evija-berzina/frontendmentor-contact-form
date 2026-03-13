@@ -2,7 +2,7 @@ export function ConsentCheckbox({handleCheckboxField, person, errorMsg}) {
 
   return (
     <div>
-      <label className="flex items-center gap-4" htmlFor="myCheckbox">
+      <label className="flex items-center gap-4 cursor-pointer" htmlFor="myCheckbox">
         <input 
           className="w-4 h-4"
           checked={person.checkbox}

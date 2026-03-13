@@ -16,7 +16,7 @@ export function InputField({person, errorMsg, handleInputChange}) {
             autoComplete="given-name"
             required
           />
-          <p className="error-message h-5">{errorMsg.firstNameMsg}</p>
+          <p className="error-message">{errorMsg.firstNameMsg}</p>
         </div>
 
         <div className="flex flex-col md:flex-1">
@@ -32,7 +32,7 @@ export function InputField({person, errorMsg, handleInputChange}) {
             autoComplete="family-name"
             required
           />
-          <p className="error-message h-5">{errorMsg.lastNameMsg}</p>
+          <p className="error-message">{errorMsg.lastNameMsg}</p>
         </div>
       </div>
 
@@ -49,7 +49,7 @@ export function InputField({person, errorMsg, handleInputChange}) {
           autoComplete="email"
           required
         />
-        <p className="error-message h-5">{errorMsg.emailMsg}</p>
+        <p className="error-message">{errorMsg.emailMsg}</p>
       </div>
     </div>
   )

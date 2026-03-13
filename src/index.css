@@ -39,15 +39,15 @@
 }
 
 .input-normal {
-  @apply border border-[hsl(var(--grey-500))] px-4 py-2 rounded-md;
+  @apply border border-[hsl(var(--grey-500))] px-4 py-2 rounded-md cursor-pointer hover:border-[hsl(var(--green-600))];
 }
 
 .input-error {
-  @apply border border-[hsl(var(--red))] px-4 py-2 rounded-md;
+  @apply border border-[hsl(var(--red))] px-4 py-2 rounded-md cursor-pointer hover:border-[hsl(var(--green-600))];
 }
 
 .form-radio-container {
-  @apply flex flex-row justify-normal items-center gap-3 border border-[hsl(var(--grey-500))] px-4 py-2 rounded-md;
+  @apply flex flex-row justify-normal items-center gap-3 border border-[hsl(var(--grey-500))] px-4 py-2 rounded-md cursor-pointer;
 }
 
 .error-message {
