@@ -60,8 +60,6 @@ export function ContactPage() {
       newErrors.checkboxMsg = 'To submit this form, please consent to being contacted';
     }
 
-    console.log(person.checkbox);
-
     setErrorMsg(newErrors);
   } 
 
@@ -94,9 +92,12 @@ export function ContactPage() {
   // }
 
   return (
-    <main>
-      <h1>Contact Us</h1>
-      <form action="" onSubmit={handleSubmit} noValidate>
+    <main className="bg-[hsl(var(--white))] flex flex-col rounded-xl p-6 md:w-xl">
+      <h1 className="text-3xl font-bold pb-2">Contact Us</h1>
+      <form
+        className="flex flex-col gap-4 mt-4"
+        action="" onSubmit={handleSubmit} noValidate
+      >
         <InputField
           handleInputChange={handleInputChange}
           person={person}
@@ -117,7 +118,7 @@ export function ContactPage() {
           person={person}
           errorMsg={errorMsg}
         />
-        <button type="submit">Submit</button>
+        <button className="bg-[hsl(var(--green-600))] text-[hsl(var(--white))] font-bold py-3 px-6 rounded-md" type="submit">Submit</button>
       </form>
     </main>
   )
