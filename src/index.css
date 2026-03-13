@@ -1,1 +1,55 @@
 @import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("./assets/fonts/static/Karla-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("./assets/fonts/static/Karla-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --green-200: 148, 38%, 91%;
+  --green-600: 169, 82%, 27%;
+  --red: 0, 66%, 54%;
+  --white: 0, 0%, 100%;
+  --grey-500: 186, 15%, 59%;
+  --grey-900: 187, 24%, 22%;
+}
+
+@layer base {
+  body {
+    background-color: hsl(var(--green-200));
+    font-family: "Karla", sans-serif;
+    font-size: 1rem;
+    color: hsl(var(--grey-900));
+  }
+}
+
+.input-normal {
+  @apply border border-[hsl(var(--grey-500))] px-4 py-2 rounded-md;
+}
+
+.input-error {
+  @apply border border-[hsl(var(--red))] px-4 py-2 rounded-md;
+}
+
+.form-radio-container {
+  @apply flex flex-row justify-normal items-center gap-3 border border-[hsl(var(--grey-500))] px-4 py-2 rounded-md;
+}
+
+.error-message {
+  @apply text-xs text-[hsl(var(--red))] pt-2;
+}
