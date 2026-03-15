@@ -139,7 +139,7 @@ export function ContactPage() {
             person={person}
             errorMsg={errorMsg}
           />
-          <button className="bg-[hsl(var(--green-600))] text-[hsl(var(--white))] font-bold py-3 px-6 rounded-md cursor-pointer" type="submit">
+          <button className="bg-[hsl(var(--green-600))] text-[hsl(var(--white))] font-bold py-3 px-6 rounded-md cursor-pointer hover:bg-[hsl(var(--green-900))] transition duration-300" type="submit">
             Submit
           </button>
         </form>
