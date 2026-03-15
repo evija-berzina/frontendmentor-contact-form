@@ -1,8 +1,9 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { InputField } from "../components/InputField";
 import { QueryType } from "../components/QueryType";
 import { MessageField } from "../components/MessageField";
 import { ConsentCheckbox } from "../components/ConsentCheckbox";
+import { SuccessMessage } from '../components/SuccessMessage';
 
 export function ContactPage() {
   const nameRegex = /^[A-Za-zÀ-ž]+(?:[-' ][A-Za-zÀ-ž]+)*$/;
@@ -23,6 +24,16 @@ export function ContactPage() {
     messageMsg: '',
     checkboxMsg: ''
   });
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+      if (success) {
+        const timer = setTimeout(() => {
+          setSuccess(false);
+        }, 5000);
+  	    return () => clearTimeout(timer);
+      }
+  }, [success]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -61,6 +72,11 @@ export function ContactPage() {
     }
 
     setErrorMsg(newErrors);
+
+    if ((nameRegex.test(person.firstName)) && (nameRegex.test(person.lastName)) && (emailRegex.test(person.email)) && (person.queryType !== "") && (person.message !== "") && (person.checkbox === true)) {
+      setSuccess(true);
+      setPerson({...person, firstName: '', lastName: '', email: '', queryType: '', message: '', checkbox: false});
+    }
   } 
 
   function handleInputChange (e, fieldName) {
@@ -92,36 +108,42 @@ export function ContactPage() {
   // }
 
   return (
-    <main className="bg-[hsl(var(--white))] flex flex-col rounded-xl p-8 md:w-xl">
-      <h1 className="text-3xl font-bold pb-2">Contact Us</h1>
-      <form
-        className="flex flex-col gap-4 mt-4"
-        action="" onSubmit={handleSubmit} noValidate
-      >
-        <InputField
-          handleInputChange={handleInputChange}
-          person={person}
-          errorMsg={errorMsg}
-        />
-        <QueryType
-          handleRadioInput={handleRadioInput}
-          person={person}
-          errorMsg={errorMsg}
-        />
-        <MessageField
-          handleInputChange={handleInputChange}
-          person={person}
-          errorMsg={errorMsg}
-        />
-        <ConsentCheckbox
-          handleCheckboxField={handleCheckboxField}
-          person={person}
-          errorMsg={errorMsg}
-        />
-        <button className="bg-[hsl(var(--green-600))] text-[hsl(var(--white))] font-bold py-3 px-6 rounded-md cursor-pointer" type="submit">
-          Submit
-        </button>
-      </form>
-    </main>
+    <>
+      <>
+        {success && <SuccessMessage /> }
+      </>
+        
+      <main className="bg-[hsl(var(--white))] flex flex-col rounded-xl p-8 md:w-xl">
+        <h1 className="text-3xl font-bold pb-2">Contact Us</h1>
+        <form
+          className="flex flex-col gap-4 mt-4"
+          action="" onSubmit={handleSubmit} noValidate
+        >
+          <InputField
+            handleInputChange={handleInputChange}
+            person={person}
+            errorMsg={errorMsg}
+          />
+          <QueryType
+            handleRadioInput={handleRadioInput}
+            person={person}
+            errorMsg={errorMsg}
+          />
+          <MessageField
+            handleInputChange={handleInputChange}
+            person={person}
+            errorMsg={errorMsg}
+          />
+          <ConsentCheckbox
+            handleCheckboxField={handleCheckboxField}
+            person={person}
+            errorMsg={errorMsg}
+          />
+          <button className="bg-[hsl(var(--green-600))] text-[hsl(var(--white))] font-bold py-3 px-6 rounded-md cursor-pointer" type="submit">
+            Submit
+          </button>
+        </form>
+      </main>
+    </>
   )
 }
