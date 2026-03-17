@@ -12,7 +12,7 @@ export function ConsentCheckbox({handleCheckboxField, person, errorMsg}) {
           id="myCheckbox"
           required
         />
-        I consent to bring contacted by the team *
+        I consent to being contacted by the team *
       </label>
       <p className="error-message">{errorMsg.checkboxMsg}</p>
     </div>
