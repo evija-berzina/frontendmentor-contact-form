@@ -4,7 +4,7 @@ export function ConsentCheckbox({handleCheckboxField, person, errorMsg}) {
     <div>
       <label className="flex items-center gap-4 cursor-pointer" htmlFor="myCheckbox">
         <input 
-          className="w-4 h-4"
+          className="w-4 h-4 accent-[hsl(var(--green-600))] hover:accent-[hsl(var(--green-600))] hover:"
           checked={person.checkbox}
           onChange={() => handleCheckboxField('checkbox')}
           type="checkbox"
