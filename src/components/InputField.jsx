@@ -38,7 +38,7 @@ export function InputField({person, errorMsg, handleInputChange}) {
 
       <div className="flex flex-col">
         <label htmlFor="email" className="
-          pb-2">Email Adress *</label>
+          pb-2">Email Address *</label>
         <input
           className={`${errorMsg.emailMsg ? 'input-error' : 'input-normal'}`}
           value={person.email}
