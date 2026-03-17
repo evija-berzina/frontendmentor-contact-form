@@ -9,7 +9,7 @@ The form includes validation:
 The project is built using React, with the form split into reusable components. State management is handled using `useState` and success message are implemented with `useEffect` and `setTimeout`.
 
 ## Live Site
-[View Live Site](preeminent-naiad-853566.netlify.app)
+[View Live Site](https://preeminent-naiad-853566.netlify.app/)
 
 ## Screenshot
 ![Screenshot](./screenshot.png)
